@@ -24,10 +24,7 @@
         <java.version>1.8</java.version>
     </properties>
 
-    <dependencies>
 
-
-    </dependencies>
 
     <build>
         <plugins>
@@ -42,9 +39,23 @@
                         </exclude>
                     </excludes>
                 </configuration>
-
             </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-release-plugin</artifactId>
+                <configuration>
+                    <goal>install</goal>
+                    <autoVersionSubmodules>true</autoVersionSubmodules>
+                </configuration>
+<!--                <version>3.0.0-M1</version>-->
+            </plugin>
+
         </plugins>
     </build>
+
+    <scm>
+        <developerConnection>scm:git:https://github.com/IgorKi/sfg-pet-clinic.git</developerConnection>
+    </scm>
 
 </project>
