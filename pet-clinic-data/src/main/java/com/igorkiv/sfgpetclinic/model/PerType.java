@@ -1,6 +1,6 @@
 package com.igorkiv.sfgpetclinic.model;
 
-public class PerType {
+public class PerType extends BaseEntity{
     private String name;
 
     public String getName() {
