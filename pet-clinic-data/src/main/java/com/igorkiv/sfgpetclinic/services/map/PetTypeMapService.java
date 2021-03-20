@@ -1,30 +1,30 @@
 package com.igorkiv.sfgpetclinic.services.map;
 
-import com.igorkiv.sfgpetclinic.model.PerType;
+import com.igorkiv.sfgpetclinic.model.PetType;
 import com.igorkiv.sfgpetclinic.services.PetTypeService;
 import org.springframework.stereotype.Service;
 
 import java.util.Set;
 
 @Service
-public class PetTypeMapService extends AbstractMapService<PerType, Long> implements PetTypeService {
+public class PetTypeMapService extends AbstractMapService<PetType, Long> implements PetTypeService {
     @Override
-    public Set<PerType> findAll() {
+    public Set<PetType> findAll() {
         return super.findAll();
     }
 
     @Override
-    public PerType findById(Long id) {
+    public PetType findById(Long id) {
         return super.findById(id);
     }
 
     @Override
-    public PerType save(PerType object) {
+    public PetType save(PetType object) {
         return super.save(object);
     }
 
     @Override
-    public void delete(PerType object) {
+    public void delete(PetType object) {
         super.delete(object);
     }
 

@@ -3,16 +3,26 @@ package com.igorkiv.sfgpetclinic.model;
 import java.time.LocalDate;
 
 public class Pet extends BaseEntity{
-    private PerType perType;
-    private Owner owner;
-    private LocalDate birthData;
 
-    public PerType getPerType() {
-        return perType;
+    private String name;
+    private PetType petType;
+    private Owner owner;
+    private LocalDate birthDate;
+
+    public String getName() {
+        return name;
     }
 
-    public void setPerType(PerType perType) {
-        this.perType = perType;
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public PetType getPetType() {
+        return petType;
+    }
+
+    public void setPetType(PetType petType) {
+        this.petType = petType;
     }
 
     public Owner getOwner() {
@@ -23,11 +33,11 @@ public class Pet extends BaseEntity{
         this.owner = owner;
     }
 
-    public LocalDate getBirthData() {
-        return birthData;
+    public LocalDate getBirthDate() {
+        return birthDate;
     }
 
-    public void setBirthData(LocalDate birthData) {
-        this.birthData = birthData;
+    public void setBirthDate(LocalDate birthDate) {
+        this.birthDate = birthDate;
     }
 }
