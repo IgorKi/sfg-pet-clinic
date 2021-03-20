@@ -35,36 +35,20 @@ public class OwnerServiceMap extends AbstractMapService<Owner, Long>  implements
 
         if (object != null) {
             if (object.getPets() != null){
-               for (int i=0; i<object.getPets().toArray().length;i++) {
-                   Pet pet = (Pet) object.getPets().toArray()[i];
+                object.getPets().forEach(pet -> {
+                    if (pet.getPetType() != null){
+                        if (pet.getPetType().getId() == null){
+                            pet.setPetType(petTypeService.save(pet.getPetType()));
+                        }
+                    } else {
+                        throw new RuntimeException("Pet Type is required");
+                    }
 
-                   if (pet.getPetType() != null){
-                       if (pet.getPetType().getId() == null){
-                           pet.setPetType(petTypeService.save(pet.getPetType()));
-                       }
-                   } else {
-                       throw new RuntimeException("Pet Type is required");
-                   }
-
-                   if (pet.getId() == null){
-                       Pet savedPet = petService.save(pet);
-                       pet.setId(savedPet.getId());
-                   }
-               }
-//                object.getPets().forEach(pet -> {
-//                    if (pet.getPetType() != null){
-//                        if (pet.getPetType().getId() == null){
-//                            pet.setPetType(petTypeService.save(pet.getPetType()));
-//                        }
-//                    } else {
-//                        throw new RuntimeException("Pet Type is required");
-//                    }
-//
-//                    if (pet.getId() == null){
-//                        Pet savedPet = petService.save(pet);
-//                        pet.setId(savedPet.getId());
-//                    }
-//                });
+                    if (pet.getId() == null){
+                        Pet savedPet = petService.save(pet);
+                        pet.setId(savedPet.getId());
+                    }
+                });
             }
             return super.save(object);
         } else {
