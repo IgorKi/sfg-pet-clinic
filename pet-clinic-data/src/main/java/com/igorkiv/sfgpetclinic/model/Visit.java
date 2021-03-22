@@ -2,17 +2,28 @@ package com.igorkiv.sfgpetclinic.model;
 
 import sun.util.resources.LocaleData;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "visits")
 public class Visit extends BaseEntity{
-    private LocaleData data;
+
+    @Column(name = "date")
+    private LocaleData date;
+
+    @Column(name = "description")
     private String description;
+
+    @ManyToOne
+    @JoinColumn(name = "pet_id")
     private Pet pet;
 
-    public LocaleData getData() {
-        return data;
+    public LocaleData getDate() {
+        return date;
     }
 
-    public void setData(LocaleData data) {
-        this.data = data;
+    public void setDate(LocaleData data) {
+        this.date = data;
     }
 
     public String getDescription() {
