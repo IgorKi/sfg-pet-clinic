@@ -1,15 +1,14 @@
 package com.igorkiv.sfgpetclinic.model;
 
-import sun.util.resources.LocaleData;
-
 import javax.persistence.*;
+import java.time.LocalDate;
 
 @Entity
 @Table(name = "visits")
 public class Visit extends BaseEntity{
 
     @Column(name = "date")
-    private LocaleData date;
+    private LocalDate date;
 
     @Column(name = "description")
     private String description;
@@ -18,11 +17,11 @@ public class Visit extends BaseEntity{
     @JoinColumn(name = "pet_id")
     private Pet pet;
 
-    public LocaleData getDate() {
+    public LocalDate getDate() {
         return date;
     }
 
-    public void setDate(LocaleData data) {
+    public void setDate(LocalDate data) {
         this.date = data;
     }
 
