@@ -3,17 +3,19 @@ package com.igorkiv.sfgpetclinic.services.map;
 import com.igorkiv.sfgpetclinic.model.Specialty;
 import com.igorkiv.sfgpetclinic.model.Vet;
 import com.igorkiv.sfgpetclinic.services.VetService;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 import java.util.Set;
 
 @Service
+@Profile({"default","map"})
 public class VetMapService extends AbstractMapService<Vet, Long>  implements VetService {
 
-    private final SpecialityService specialityService;
+    private final SpecialityMapService specialityMapService;
 
-    public VetMapService(SpecialityService specialityService) {
-        this.specialityService = specialityService;
+    public VetMapService(SpecialityMapService specialityMapService) {
+        this.specialityMapService = specialityMapService;
     }
 
     @Override
@@ -31,7 +33,7 @@ public class VetMapService extends AbstractMapService<Vet, Long>  implements Vet
         if (object.getSpecialities().size() > 0){
             object.getSpecialities().forEach(speciality -> {
                 if (speciality.getId() == null){
-                    Specialty saveSpecialty = specialityService.save(speciality);
+                    Specialty saveSpecialty = specialityMapService.save(speciality);
                     speciality.setId(saveSpecialty.getId());
                 }
             });
